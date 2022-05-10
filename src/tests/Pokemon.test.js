@@ -22,29 +22,29 @@ describe('Testando o Pokemon.js', () => {
   test('Verifica se o card indicado na Pokédex contém um link de navegação',
     () => {
       renderWithRouter(<App />);
-      const link = screen.getAllByRole('link');
+      const link = screen.getByRole('link', { name: /More details/i });
       const href = '/pokemons/25';
-      expect(link[3]).toBeInTheDocument();
-      expect(link[3]).toHaveAttribute('href', href);
+      expect(link).toBeInTheDocument();
+      expect(link).toHaveAttribute('href', href);
     });
   test('Verifica se ao clicar no link é feito o redirecionamento da aplicação',
     () => {
       renderWithRouter(<App />);
-      const link = screen.getAllByRole('link');
+      const link = screen.getByRole('link', { name: /More details/i });
       userEvent.click(link);
       const title = screen.queryByText('Pikachu Details');
       expect(title).toBeInTheDocument();
     });
   test('Verifica também se a URL exibida no navegador muda para /pokemon/<id>', () => {
     const { history } = renderWithRouter(<App />);
-    const moreDetails = screen.getByRole('link', { name: 'More details' });
+    const moreDetails = screen.getByRole('link', { name: /More details/i });
     userEvent.click(moreDetails);
     const { pathname } = history.location;
     expect(pathname).toBe('/pokemons/25');
   });
   test('Verifica se existe um ícone de estrela nos pokémons favoritados.', () => {
     renderWithRouter(<App />);
-    const moreDetails = screen.getByRole('link', { name: /more details/i });
+    const moreDetails = screen.getByRole('link', { name: /More details/i });
     userEvent.click(moreDetails);
     const check = screen.getByRole('checkbox');
     userEvent.click(check);
