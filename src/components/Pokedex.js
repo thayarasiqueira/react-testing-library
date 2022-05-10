@@ -46,6 +46,7 @@ class Pokedex extends React.Component {
         <Button
           onClick={() => this.filterPokemons('all')}
           className="filter-button"
+          dataTestId="all"
         >
           All
         </Button>
