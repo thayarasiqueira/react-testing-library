@@ -30,7 +30,7 @@ describe('Testando o Pokemon.js', () => {
   test('Verifica se ao clicar no link é feito o redirecionamento da aplicação',
     () => {
       renderWithRouter(<App />);
-      const link = screen.getByRole('link', { name: 'More details' });
+      const link = screen.getAllByRole('link');
       userEvent.click(link);
       const title = screen.queryByText('Pikachu Details');
       expect(title).toBeInTheDocument();
@@ -44,7 +44,7 @@ describe('Testando o Pokemon.js', () => {
   });
   test('Verifica se existe um ícone de estrela nos pokémons favoritados.', () => {
     renderWithRouter(<App />);
-    const moreDetails = screen.getByRole('link', { name: 'More details' });
+    const moreDetails = screen.getByRole('link', { name: /more details/i });
     userEvent.click(moreDetails);
     const check = screen.getByRole('checkbox');
     userEvent.click(check);
