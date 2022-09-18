@@ -1,5 +1,13 @@
 # React Testing Library
 
+*Developed on May 2022*
+
+
+https://user-images.githubusercontent.com/98190097/190928191-e3c4efce-4e6d-4b18-bc0c-bcb34c4afc0d.mp4
+
+
+
+
 This project contains Jest and RTL tests for a React application.
 The skills developed were:
 * Using the selectors (queries) of React-Testing-Library in automated testing.
